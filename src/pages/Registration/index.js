@@ -5,7 +5,7 @@ import './styles.scss'
 class Registration extends Component{
     render() {
         return( 
-            <Signup />
+            <Signup handleLogin={this.props.handleLogin}/>
         )
     }
 }

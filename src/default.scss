@@ -49,3 +49,23 @@ a, a:hover {
     padding: 0 30px;
     margin: 0 auto;
 }
+
+.sidebar {
+    position: absolute;
+    top: 6.5; left: 0;
+    width: 25.0rem;
+    height: 100%;
+    z-index: 1;
+    border-right: 1px solid #d3d3d3;
+}
+
+.total {
+    border-top: 1px solid #d3d3d3;
+    margin-top: 3rem;
+    padding: 1rem 1rem;;
+    color: green;
+    font-size: 1.8rem;
+    line-height: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+}

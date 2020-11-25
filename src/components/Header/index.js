@@ -4,6 +4,7 @@ import Logo from './../../assets/F45-stripped.png'
 import { Link } from 'react-router-dom'
 
 const Header = props => {
+    const { currentUser, handleLogout } = props
     return (
         <header className="header">
             <div className="wrap">
@@ -12,7 +13,21 @@ const Header = props => {
                         <img src={Logo} alt="F45 Logo"/>
                     </Link>
                 </div>
-                <div className="callToActions">
+            <div className="callToActions">
+                {currentUser && (
+                    <ul>
+                        <li>
+                            <Link to='/profile'>{currentUser.name}</Link>
+                        </li>
+                        <li onClick={()=>handleLogout()}>
+                           <a>LogOut</a>
+                          
+                        </li>
+                    </ul>
+                )}
+
+                {!currentUser && (
+                
                     <ul>
                         <li>
                             <Link to='/registration'>
@@ -24,11 +39,15 @@ const Header = props => {
                                 Login
                             </Link>
                         </li>
-                    </ul>
-                </div>
-            </div>
+                    </ul>)}
+                </div> 
+            </div> 
         </header>
     )
+}
+
+Header.defaultProps = {
+    currentUser: null
 }
 
 export default Header

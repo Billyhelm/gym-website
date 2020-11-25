@@ -4,7 +4,7 @@ import './styles.scss'
 
 const Login = props => {
     return (
-        <SignIn />
+        <SignIn {...props}/>
     )
 }
 

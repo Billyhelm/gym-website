@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.scss'
 
-const FormSelect = ({ handleChange, label, options, ...otherProps }) => {
+const FormSelect = ({ handleChange, label, options, value, ...otherProps }) => {
     return (
         <div className='formRow' >
             {label && (
@@ -13,7 +13,7 @@ const FormSelect = ({ handleChange, label, options, ...otherProps }) => {
             <select 
             className='formSubmit'
             onChange={handleChange}
-            defaultValue=""
+            defaultValue={value}
             {...otherProps} >
                 <option hidden value=''>Choose One</option>
             {options.map(sentence => {

@@ -3,7 +3,7 @@ import './styles.scss'
 import FormInput from './../forms/FormInput'
 import FormSelect from './../forms/FormSelect'
 import Button from './../forms/Button'
-import App, { handleLogin } from './../../App'
+
 
 
 class Signup extends Component {
@@ -24,39 +24,6 @@ class Signup extends Component {
         this.handleChange = this.handleChange.bind(this)
     }
 
-    // componentDidMount(){
-    //     fetch('http://localhost:3000/api/v1/login', {
-    //         method: 'POST',
-    //         headers: {
-    //           'Content-Type': 'application/json',
-    //           Accept: 'application/json'
-    //         },
-    //         body: JSON.stringify({
-    //           user: {
-    //             // name: "justin",
-    //             password: "whatscooking",
-    //             // security_question: 'What is your favorite color?',
-    //             // security_answer: 'blue',
-    //             email: 'billy@email.com',
-    //             // status: 'member',
-    //             // image: "https://upload.wikimedia.org/wikipedia/commons/4/49/Syvia_of_Sylvia%27s_reaturant_N.Y.C_%28cropped%29.jpg"
-    //           }
-    //         })
-    //       })
-    //         .then(r => r.json())
-    //         .then(user => {
-    //             return (
-    //                 fetch('http://localhost:3000/api/v1/profile', {
-    //                     method: 'GET',
-    //                     headers: {
-    //                       Authorization: `Bearer ${user.jwt} `
-    //                     }
-    //                   }) 
-    //             )
-    //         })
-    //     .then(res=>res.json()).then(data => console.log(data.user.name))
-
-    //     }
     handleChange = (e) => {
         const {name, value} = e.target
         this.setState({
@@ -67,13 +34,13 @@ class Signup extends Component {
     handleFormSubmit = async event => {
         event.preventDefault()
         const {name, email, password, confirmPassword, securityQuestion, securityAnswer, image} = this.state
-
+        const {handleLogin} = this.props
         if (password !== confirmPassword){
             const err = ["Passwords Don't match"]
             this.setState({
                 errors: err
             })
-            return
+            return 
         }
 
         try {
@@ -105,7 +72,9 @@ class Signup extends Component {
                         }) 
                   )
               })
-          .then(res=>res.json()).then(data => handleLogin(data.user))
+          .then(res=>res.json()).then(data => {
+                console.log("this is my data", data.user)
+              return handleLogin(data.user)})
           .then(this.setState({
             name: '',
             email: '',
@@ -194,7 +163,7 @@ class Signup extends Component {
                             placeholder="Link For Profile Pic"
                             onChange={this.handleChange}
                          />
-                         
+                        
                         <Button type='submit'>
                             Sign Up
                         </Button>

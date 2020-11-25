@@ -1,14 +1,20 @@
 import React, {Component} from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import './default.scss'
 import Homepage from './pages/Homepage';
 import Registration from './pages/Registration'
 import Login from './pages/Login'
 import MainLayout from './layouts/MainLayout'
 import HomepageLayout from './layouts/HomepageLayout'
+import Products from './pages/Products'
+import ProductsLayout from './layouts/ProductsLayout'
+import ProductShow from './pages/ProductShow'
+import Profile from './pages/Profile'
 
 const initialState = {
-  currentUser: null
+  currentUser: null,
+  cart: [], 
+  total: 0.0
 }
 
 class App extends Component {
@@ -21,45 +27,64 @@ class App extends Component {
 
   authListener = null
 
-  handleLogin = ({user}) => {
+ handleLogin = (user) => {
+   console.log(user)
     this.setState({currentUser: user})
+    console.log("this is my state", this.state)
   }
 
-  handleLogout = props => {
+  handleLogout = () => {
     this.setState(initialState)
   }
 
-  // componentDidMount(){
-  //   this.autherListener 
-
-  // }
-
-  // componentWillUnmount(){
-  //   this.authListerner()
-
-  // }
+  addToCart = (product, size) => {
+    product.size = size
+    this.setState({cart: [...this.state.cart, product]})
+    let total = this.state.total + product.price
+    this.setState({total: total})
+  }
 
   render(){
+    const {currentUser, total, cart} = this.state
 
     
     return (
       <div className="App">
         <Switch>
           <Route exact path='/' render={()=> (
-            <HomepageLayout>
+            <HomepageLayout currentUser={currentUser} handleLogout={this.handleLogout}>
               <Homepage />
             </HomepageLayout>
           )}/>
-          <Route path='/registration/' render={() => (
-            <MainLayout>
-              <Registration />
+          <Route path='/registration/' 
+          render={() => currentUser ? <Redirect to='/'/> : (
+            <MainLayout currentUser={currentUser} handleLogout={this.handleLogout}>
+              <Registration handleLogin={this.handleLogin}/>
             </MainLayout>
           )}/>
-          <Route path='/login/' render={() => (
-            <MainLayout>
-              <Login />
+          <Route path='/login/' 
+          render={() => currentUser ? <Redirect to='/'/> : (
+            <MainLayout currentUser={currentUser} handleLogout={this.handleLogout}>
+              <Login handleLogin={this.handleLogin}/>
             </MainLayout>
           )}/>
+          <Route path='/profile/' 
+          render={() =>  !currentUser ? <Redirect to='/' /> : (
+            <MainLayout currentUser={currentUser} handleLogout={this.handleLogout}>
+              <Profile currentUser={currentUser} handleLogin={this.handleLogin}/>
+            </MainLayout>
+          )}/>
+          <Route exact path='/products/'  render={(props) => (
+              <ProductsLayout currentUser={currentUser} handleLogout={this.handleLogout}>
+                <Products props={props}/>
+              </ProductsLayout>
+          )}/>
+          <Route path='/products/:id'  render={(props) => (
+            <ProductsLayout currentUser={currentUser} handleLogout={this.handleLogout}>
+              <ProductShow props={props} cart={cart} addToCart={this.addToCart} total={total}/>
+            </ProductsLayout>
+        )}
+          />
         </Switch>
       </div>
   );
@@ -67,6 +92,8 @@ class App extends Component {
 }
 
 export default App;
+
+
 
 
 //currently 25:32 on video #4
