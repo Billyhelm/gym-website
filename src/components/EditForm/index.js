@@ -65,11 +65,10 @@ class EditForm extends Component {
         ).then(res => res.json())
         // <Link to={{pathname:`/products/${product.id}`, state: {product}}}>
            
-        .then((data)=>{
-            // console.log(data)
-            // this.location.state.product=data
-            // window.location.href = `http://localhost:3001/products/`
-            // this.setState(this.initialState)
+        .then((product)=>{
+            // console.log(product)
+            this.setState(this.initialState)
+            window.location.href = `http://localhost:3001/products/`
         })
 
     }

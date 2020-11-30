@@ -4,7 +4,7 @@ import Logo from './../../assets/F45-stripped.png'
 import { Link } from 'react-router-dom'
 
 const Header = props => {
-    const { currentUser, handleLogout } = props
+    const { handleLogout } = props
     return (
         <header className="header">
             <div className="wrap">
@@ -14,12 +14,12 @@ const Header = props => {
                     </Link>
                 </div>
             <div className="callToActions">
-                {currentUser && (
+                {localStorage.id && (
                     <ul>
                         <li>
-                            <Link to='/profile'>{currentUser.name}</Link>
+                            <Link to='/profile'>{localStorage.name}</Link>
                         </li>
-                        {currentUser.status === 'admin' && (
+                        {localStorage.status === 'admin' && (
                         <li>
                             <Link to='/newproduct'>New Product</Link>
                         </li>
@@ -32,7 +32,7 @@ const Header = props => {
                     </ul>
                 )}
 
-                {!currentUser && (
+                {!localStorage.id && (
                 
                     <ul>
                         <li>
@@ -50,10 +50,6 @@ const Header = props => {
             </div> 
         </header>
     )
-}
-
-Header.defaultProps = {
-    currentUser: null
 }
 
 export default Header

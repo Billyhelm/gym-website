@@ -17,7 +17,7 @@ class Signup extends Component {
             securityQuestion: '',
             securityAnswer: '',
             image: '',
-            status: 'admin',
+            status: 'member',
             errors: []
         }
 
@@ -75,6 +75,13 @@ class Signup extends Component {
               })
           .then(res=>res.json()).then(data => {
                 console.log("this is my data", data.user)
+                localStorage.id = data.user.id
+                localStorage.name = data.user.name
+                localStorage.status = data.user.status
+                localStorage.image = data.user.image
+                localStorage.securityAnswer = data.user.security_answer
+                localStorage.securityQuestion = data.user.security_question
+                localStorage.email = data.user.email
               return handleLogin(data.user)})
           .then(this.setState({
             name: '',
@@ -146,7 +153,7 @@ class Signup extends Component {
                          />
                          <FormSelect 
                             label = "Pick a Security Question"
-                            name='securtiyQuetion'
+                            name='securityQuestion'
                             value={securityQuestion}
                             onChange={this.handleChange}
                             options={['What is your favorite color?', 'What city were you born in?']}

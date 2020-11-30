@@ -11,7 +11,7 @@ import Button from './../../components/forms/Button'
 
 const ProductShow = (props) => {
     const {product} = props.props.location.state
-    const {cart, addToCart, total, currentUser, handleRefresh} = props
+    const {cart, addToCart, total, handleRefresh} = props
     const history = useHistory()
 
     const handleAdd = (e) => {
@@ -27,7 +27,7 @@ const ProductShow = (props) => {
                 amount: e.target.quantity.value,
                 product: product.id
         })
-    }).then(()=> handleRefresh())
+    }).then((quant)=> product.quantities.push(quant))
 }
 
     const handleDelete = () => {
@@ -54,10 +54,10 @@ const ProductShow = (props) => {
         <h3>Click Below To Add To Cart</h3>
         {product.quantities.map(quantity=>{
             return <button onClick={() => addToCart(product, quantity.size.name)}>
-                 {currentUser && currentUser.status == 'admin' ? (`${quantity.size.name} - ${quantity.amount}`) : quantity.size.name}
+                 {localStorage && localStorage.status == 'admin' ? (`${quantity.size.name} - ${quantity.amount}`) : quantity.size.name}
                 </button>
         })}
-        {currentUser && currentUser.status == 'admin' ? 
+        {localStorage && localStorage.status == 'admin' ? 
         <div className="addQuantity">
             <form onSubmit={(e)=>handleAdd(e)}>
                 <br/>

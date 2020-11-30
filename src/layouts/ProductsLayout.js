@@ -11,13 +11,6 @@ const ProductsLayout = props => {
         <div >
             <Header {...props}/>
 
-            {/* <div className='sidebar' >
-                <VerticalSearch>
-                    <Checkbox />
-                </VerticalSearch>
-
-            </div> */}
-
             <div className="main">
                 {props.children}
             </div>

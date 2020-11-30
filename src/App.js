@@ -40,6 +40,7 @@ class App extends Component {
 
   submitOrder = () => {
     console.log("submitting order")
+    
   }
 
   handleRefresh = () => {
@@ -49,13 +50,14 @@ class App extends Component {
   }
 
  handleLogin = (user) => {
-   console.log(user)
+
     this.setState({currentUser: user})
     // console.log("this is my state", this.state)
   }
 
   handleLogout = () => {
     this.setState(initialState)
+    localStorage.clear()
   }
 
   addToCart = (product, size) => {
@@ -67,7 +69,7 @@ class App extends Component {
 
   render(){
     const {currentUser, total, cart} = this.state
-
+    // console.log('This is my user', localStorage.id, localStorage.name, localStorage.status)
     
     return (
       <div className="App">
@@ -78,19 +80,19 @@ class App extends Component {
             </HomepageLayout>
           )}/>
           <Route path='/registration/' 
-          render={() => currentUser ? <Redirect to='/'/> : (
-            <MainLayout currentUser={currentUser} handleLogout={this.handleLogout}>
+          render={() => localStorage.id ? <Redirect to='/'/> : (
+            <MainLayout handleLogout={this.handleLogout}>
               <Registration handleLogin={this.handleLogin}/>
             </MainLayout>
           )}/>
           <Route path='/login/' 
-          render={() => currentUser ? <Redirect to='/'/> : (
+          render={() => localStorage.id ? <Redirect to='/'/> : (
             <MainLayout currentUser={currentUser} handleLogout={this.handleLogout}>
               <Login handleLogin={this.handleLogin}/>
             </MainLayout>
           )}/>
           <Route path='/profile/' 
-          render={() =>  !currentUser ? <Redirect to='/' /> : (
+          render={() =>  !localStorage.id ? <Redirect to='/' /> : (
             <MainLayout currentUser={currentUser} handleLogout={this.handleLogout}>
               <Profile currentUser={currentUser} handleLogin={this.handleLogin}/>
             </MainLayout>
@@ -100,25 +102,25 @@ class App extends Component {
                 <Products props={props}/>
               </ProductsLayout>
           )}/>
-          <Route exact path='/newproduct/'  render={(props) =>  currentUser.status !== 'admin' ? <Redirect to='/' /> : (
-              <ProductsLayout currentUser={currentUser} handleLogout={this.handleLogout}>
+          <Route exact path='/newproduct/'  render={(props) =>  localStorage.status !== 'admin' ? <Redirect to='/' /> : (
+              <ProductsLayout handleLogout={this.handleLogout}>
                 <NewProduct props={props}/>
               </ProductsLayout>
           )}/>
           <Route exact path='/products/:id'  render={(props) => (
-            <ProductsLayout currentUser={currentUser} handleLogout={this.handleLogout}>
+            <ProductsLayout handleLogout={this.handleLogout}>
               <ProductShow currentUser={currentUser} props={props} cart={cart} addToCart={this.addToCart} total={total} handleRefresh={this.handleRefresh}/>
             </ProductsLayout>
         )}
           />
           <Route path='/products/:id/edit'  render={(props) => (
-            <ProductsLayout currentUser={currentUser} handleLogout={this.handleLogout}>
+            <ProductsLayout handleLogout={this.handleLogout}>
               <EditProduct currentUser={currentUser} props={props}/>
             </ProductsLayout>
         )}
           />
-          <Route exact path='/checkout/'  render={(props) =>  !currentUser ? <Redirect to='/' /> : (
-              <ProductsLayout currentUser={currentUser} handleLogout={this.handleLogout}>
+          <Route exact path='/checkout/'  render={(props) =>  !localStorage.id ? <Redirect to='/' /> : (
+              <ProductsLayout handleLogout={this.handleLogout}>
                 <Checkout props={props} cart={cart} total={total} handleDelete={this.handleDelete} submitOrder={this.submitOrder}/>
               </ProductsLayout>
           )}/>

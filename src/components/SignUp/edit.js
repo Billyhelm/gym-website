@@ -11,14 +11,14 @@ class Edit extends Component {
     constructor(props){
         super(props)
         this.state = {
-            name: props.currentUser.name,
-            email: props.currentUser.email,
-            password: props.currentUser.password,
-            confirmPassowrd: props.currentUser.password,
-            securityQuestion: props.currentUser.securityQuestion,
-            securityAnswer: props.currentUser.securityAnswer,
-            image: props.currentUser.image,
-            status: props.currentUser.status,
+            name: localStorage.name,
+            email: localStorage.email,
+            password: localStorage.password,
+            confirmPassowrd: localStorage.password,
+            securityQuestion: localStorage.securityQuestion,
+            securityAnswer: localStorage.securityAnswer,
+            image: localStorage.image,
+            status: localStorage.status,
             errors: []
         }
 
