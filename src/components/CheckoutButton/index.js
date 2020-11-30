@@ -1,12 +1,15 @@
 import React from 'react'
 import './styles.scss'
+import { Link } from 'react-router-dom'
 
 const CheckoutButton = () => {
     return(
 
 
                 <div className="sideBtn">
-                    <a>checkout</a>
+                    <Link to='/checkout' >
+                    checkout
+                    </Link>
                 </div>
 
     )

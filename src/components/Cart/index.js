@@ -1,8 +1,10 @@
 import React, { Component } from 'react' 
 import './styles.scss'
 
+
 const Cart = props => {
-    const {products} = props
+    const {products, page, handleDelete} = props
+
     
         return(
             <div className="cartContainer">
@@ -16,7 +18,9 @@ const Cart = props => {
                                 ${product.price}  -  Size: {product.size}
                             
                             </div>
-                            
+                            <div className="delete">
+                            {page ? <button onClick={()=>handleDelete(product.id, product.price)}>Delete Me</button> : null}
+                            </div>
                         </div>
                     )
                 })}

@@ -34,7 +34,7 @@ const Categories = ({ children, ...otherProps }) => {
         <label><input
           type="radio"
           name="filter"
-          value="accesory"
+          value="accessory"
           onChange={(e) => handleFilter(e.target.value )}
         /> Accesories</label>
         <br/>

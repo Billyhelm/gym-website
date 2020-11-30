@@ -19,6 +19,12 @@ const Header = props => {
                         <li>
                             <Link to='/profile'>{currentUser.name}</Link>
                         </li>
+                        {currentUser.status === 'admin' && (
+                        <li>
+                            <Link to='/newproduct'>New Product</Link>
+                        </li>
+
+                        )}
                         <li onClick={()=>handleLogout()}>
                            <a>LogOut</a>
                           

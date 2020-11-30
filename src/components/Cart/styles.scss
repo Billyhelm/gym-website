@@ -28,6 +28,18 @@
             z-index: 0;
             padding: 2px;
         }
+        .delete {
+            text-align: right;
+            
+            button {
+                margin-right: 5%;
+                top: -100px;
+                position: relative;
+                z-index: 3;
+                padding: 2px;
+
+        }
+        }
 
         #Overflow {
             overflow-wrap: break-word;

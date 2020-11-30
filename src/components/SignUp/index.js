@@ -17,7 +17,7 @@ class Signup extends Component {
             securityQuestion: '',
             securityAnswer: '',
             image: '',
-            status: 'member',
+            status: 'admin',
             errors: []
         }
 
@@ -33,7 +33,7 @@ class Signup extends Component {
 
     handleFormSubmit = async event => {
         event.preventDefault()
-        const {name, email, password, confirmPassword, securityQuestion, securityAnswer, image} = this.state
+        const {name, email, password, confirmPassword, securityQuestion, securityAnswer, image, status} = this.state
         const {handleLogin} = this.props
         if (password !== confirmPassword){
             const err = ["Passwords Don't match"]
@@ -56,9 +56,10 @@ class Signup extends Component {
                     name,
                     email, 
                     password, 
-                    securityQuestion,
-                    securityAnswer,
-                    image
+                    security_question: securityQuestion,
+                    security_answer: securityAnswer,
+                    image,
+                    status
                   }
                 })
               }) .then(r => r.json())
@@ -83,7 +84,7 @@ class Signup extends Component {
             securityQuestion: '',
             securityAnswer: '',
             image: '',
-            status: 'member',
+            status: 'admin',
             errors: []
           }))
 
@@ -146,6 +147,7 @@ class Signup extends Component {
                          <FormSelect 
                             label = "Pick a Security Question"
                             name='securtiyQuetion'
+                            value={securityQuestion}
                             onChange={this.handleChange}
                             options={['What is your favorite color?', 'What city were you born in?']}
                          />

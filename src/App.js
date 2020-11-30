@@ -10,11 +10,16 @@ import Products from './pages/Products'
 import ProductsLayout from './layouts/ProductsLayout'
 import ProductShow from './pages/ProductShow'
 import Profile from './pages/Profile'
+import NewProduct from './pages/NewProduct'
+import Checkout from './pages/Checkout'
+import EditProduct from './pages/EditProduct';
+
 
 const initialState = {
   currentUser: null,
   cart: [], 
-  total: 0.0
+  total: 0.0,
+  refresh: true
 }
 
 class App extends Component {
@@ -27,10 +32,26 @@ class App extends Component {
 
   authListener = null
 
+  handleDelete = (id, price) => {
+    this.setState({cart: this.state.cart.filter(product => product.id !== id), 
+      total: (this.state.total-price)
+    })
+  }
+
+  submitOrder = () => {
+    console.log("submitting order")
+  }
+
+  handleRefresh = () => {
+    // console.log("trying to refresh", this.state.refresh)
+    this.setState({refresh: !this.state.refresh})
+    console.log(this.state.refresh)
+  }
+
  handleLogin = (user) => {
    console.log(user)
     this.setState({currentUser: user})
-    console.log("this is my state", this.state)
+    // console.log("this is my state", this.state)
   }
 
   handleLogout = () => {
@@ -79,12 +100,28 @@ class App extends Component {
                 <Products props={props}/>
               </ProductsLayout>
           )}/>
-          <Route path='/products/:id'  render={(props) => (
+          <Route exact path='/newproduct/'  render={(props) =>  currentUser.status !== 'admin' ? <Redirect to='/' /> : (
+              <ProductsLayout currentUser={currentUser} handleLogout={this.handleLogout}>
+                <NewProduct props={props}/>
+              </ProductsLayout>
+          )}/>
+          <Route exact path='/products/:id'  render={(props) => (
             <ProductsLayout currentUser={currentUser} handleLogout={this.handleLogout}>
-              <ProductShow props={props} cart={cart} addToCart={this.addToCart} total={total}/>
+              <ProductShow currentUser={currentUser} props={props} cart={cart} addToCart={this.addToCart} total={total} handleRefresh={this.handleRefresh}/>
             </ProductsLayout>
         )}
           />
+          <Route path='/products/:id/edit'  render={(props) => (
+            <ProductsLayout currentUser={currentUser} handleLogout={this.handleLogout}>
+              <EditProduct currentUser={currentUser} props={props}/>
+            </ProductsLayout>
+        )}
+          />
+          <Route exact path='/checkout/'  render={(props) =>  !currentUser ? <Redirect to='/' /> : (
+              <ProductsLayout currentUser={currentUser} handleLogout={this.handleLogout}>
+                <Checkout props={props} cart={cart} total={total} handleDelete={this.handleDelete} submitOrder={this.submitOrder}/>
+              </ProductsLayout>
+          )}/>
         </Switch>
       </div>
   );
