@@ -38,7 +38,7 @@ const Checkout = props => {
                 .then(()=>{
                     async function send(cart) {
                         for (const product of cart){
-                            console.log(product)
+                            // console.log("this is each product", product)
                             await fetch ('http://localhost:3000/order_items', {
                                     method: 'POST',
                                     headers: {
@@ -50,11 +50,14 @@ const Checkout = props => {
                                         product_id: product.id,
                                         size: product.size,
                                         amount: product.price
-                        })})
-                    }}
+                        })}).then(res=>res.json()).then((data)=> console.log("this is my json resp", data))
+                    }
+                     window.location.href = `http://localhost:3001/orders/` }
+                // console.log("this is the cart", cart)
                 send(cart)
-            }).then(()=> window.location.href = `http://localhost:3001/products/`) 
-    })
+            })
+            
+        })
     }
 
     return (

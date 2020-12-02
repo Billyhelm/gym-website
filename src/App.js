@@ -12,7 +12,9 @@ import ProductShow from './pages/ProductShow'
 import Profile from './pages/Profile'
 import NewProduct from './pages/NewProduct'
 import Checkout from './pages/Checkout'
-import EditProduct from './pages/EditProduct';
+import EditProduct from './pages/EditProduct'
+import Orders from './pages/Orders'
+import Admin from './pages/Admin'
 
 
 const initialState = {
@@ -40,7 +42,7 @@ class App extends Component {
 
   submitOrder = () => {
     console.log("submitting order")
-    
+
   }
 
   handleRefresh = () => {
@@ -91,12 +93,12 @@ class App extends Component {
               <Login handleLogin={this.handleLogin}/>
             </MainLayout>
           )}/>
-          <Route path='/profile/' 
+          {/* <Route path='/profile/' 
           render={() =>  !localStorage.id ? <Redirect to='/' /> : (
             <MainLayout currentUser={currentUser} handleLogout={this.handleLogout}>
               <Profile currentUser={currentUser} handleLogin={this.handleLogin}/>
             </MainLayout>
-          )}/>
+          )}/> */}
           <Route exact path='/products/'  render={(props) => (
               <ProductsLayout currentUser={currentUser} handleLogout={this.handleLogout}>
                 <Products props={props}/>
@@ -122,6 +124,16 @@ class App extends Component {
           <Route exact path='/checkout/'  render={(props) =>  !localStorage.id ? <Redirect to='/' /> : (
               <ProductsLayout handleLogout={this.handleLogout}>
                 <Checkout props={props} cart={cart} total={total} handleDelete={this.handleDelete} submitOrder={this.submitOrder}/>
+              </ProductsLayout>
+          )}/>
+          <Route exact path='/orders/'  render={(props) => (
+              <ProductsLayout currentUser={currentUser} handleLogout={this.handleLogout}>
+                <Orders props={props}/>
+              </ProductsLayout>
+          )}/>
+          <Route exact path='/admin/'  render={(props) => (
+              <ProductsLayout currentUser={currentUser} handleLogout={this.handleLogout}>
+                <Admin props={props}/>
               </ProductsLayout>
           )}/>
         </Switch>

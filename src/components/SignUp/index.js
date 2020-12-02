@@ -17,7 +17,7 @@ class Signup extends Component {
             securityQuestion: '',
             securityAnswer: '',
             image: '',
-            status: 'member',
+            status: 'admin',
             errors: []
         }
 

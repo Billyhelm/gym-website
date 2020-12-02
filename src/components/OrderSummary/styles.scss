@@ -2,53 +2,58 @@
     padding-top: 2rem;
     width: 90%;
     
-    .cartItem{
+    .summaryItem{
 
         border: 1px solid #9e9e9e;
         border-radius: 10px;
         outline: none;
         height: 9rem;
         width: 100%;
-        position: relative;
-        margin-top: 5px;
+        margin-top: 10px;
 
         
         img {
             margin-right: 65%;
             max-height: 7rem;
-            left: 30px;
-            top: 1rem;
+            // top: 1rem;
             display: block;
             position: relative;
             z-index: 1;
         }
         .text {
-            font-size: 20px;
-            width: 60%;
-            left: 40%;
+            font-size: 30px;
+            width: 80%;
+            left: 5%;
             margin-right: 0%;
-            top: -70px;
+            top: 2rem;
             position: relative;
             z-index: 0;
             padding: 2px;
         }
+        .status {
+            font-size: 20px;
+            top: 4.5rem;
+            position: relative;
+            text-align: left;
+            margin-left: 5%;
+        }
+        .price {
+            color: green;
+            font-size: 30px;
+            top: 1rem;
+            position: relative;
+            text-align: right;
+            margin-right: 5%;
+        }
         .delete {
             text-align: right;
-            // font-size: 10px;
-            // left: 80%;
             
             button {
-                background-color: black;
-                font-size: 20px;
-                color: white;
-                font-weight: 200;
-                border: 1px solid black;
-                border-radius: 10px;
                 margin-right: 5%;
-                top: -120px;
+                top: 0px;
                 position: relative;
                 z-index: 3;
-                padding: 10px;
+                padding: 2px;
 
         }
         }

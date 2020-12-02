@@ -1,0 +1,285 @@
+.adminOrderContainer{
+    padding-top: 2rem;
+    width: 90%;
+    
+
+    .fullItem{
+
+        border: 1px solid #9e9e9e;
+        border-radius: 10px;
+        outline: none;
+        // height: 40rem;
+        width: 100%;
+        position: relative;
+        margin-top: 5px;
+
+        .pic{
+            
+            height: 40px;
+            width: 40px;
+            top: -5.5rem;
+            margin-left: 1%;
+            border-radius: 40px;
+            position: relative;
+            
+        }
+
+
+        img {
+            margin-right: 65%;
+            max-height: 7rem;
+            // top: 1rem;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+        .name {
+            font-size: 20px;
+            width: 80%;
+            left: 10%;
+            margin-right: 0%;
+            top: 0rem;
+            position: relative;
+            z-index: 0;
+            padding: 2px;
+        }
+        .text {
+            font-size: 20px;
+            width: 80%;
+            left: 10%;
+            margin-right: 0%;
+            top: 2px;
+            position: relative;
+            z-index: 0;
+            padding: 2px;
+        }
+        .status {
+            font-size: 20px;
+            top: -2rem;
+            position: relative;
+            text-align: center;
+            margin-left: 5%;
+        }
+        .price {
+            color: green;
+            font-size: 30px;
+            top: -3.5rem;
+            position: relative;
+            text-align: right;
+            margin-right: 5%;
+        }
+        .delete {
+            text-align: right;
+            
+            button {
+                margin-right: 5%;
+                top: 0px;
+                position: relative;
+                z-index: 3;
+                padding: 2px;
+
+        }
+        }
+
+        #Overflow {
+            overflow-wrap: break-word;
+            hyphens: auto;
+          }
+    }
+    .orderItem{
+
+        .orderItem{
+
+            border: 1px solid #9e9e9e;
+            // border-bottom: 1px solid #9e9e9e;
+            outline: none;
+            height: 9rem;
+            width: 100%;
+            
+    
+            
+            img {
+                // margin-right: 65%;
+                margin-left: 5%;
+                max-height: 7rem;
+                top: 1rem;
+                display: block;
+                position: relative;
+                z-index: 1;
+            }
+            .text {
+                font-size: 20px;
+                // width: 80%;
+                // left: 5%;
+                margin-right: 5%;
+                top: -5rem;
+                position: relative;
+                z-index: 0;
+                padding: 2px;
+                text-align: right;
+            }
+            .price {
+                color: green;
+                font-size: 30px;
+                top: 3rem;
+                position: relative;
+                text-align: right;
+                margin-right: 5%;
+            }
+            .delete {
+                text-align: right;
+                
+                button {
+                    margin-right: 5%;
+                    top: 0px;
+                    position: relative;
+                    z-index: 3;
+                    padding: 2px;
+    
+            }
+            }
+    
+            #Overflow {
+                overflow-wrap: break-word;
+                hyphens: auto;
+              }
+        }        outline: none;
+        height: 9rem;
+        width: 100%;
+        
+
+        
+        img {
+            // margin-right: 65%;
+            margin-left: 5%;
+            max-height: 7rem;
+            top: 1rem;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+        .text {
+            font-size: 30px;
+            // width: 80%;
+            // left: 5%;
+            margin-right: 5%;
+            top: -5rem;
+            position: relative;
+            z-index: 0;
+            padding: 2px;
+            text-align: right;
+        }
+        .price {
+            color: green;
+            font-size: 30px;
+            top: 3rem;
+            position: relative;
+            text-align: right;
+            margin-right: 5%;
+        }
+        .delete {
+            text-align: right;
+            
+            button {
+                margin-right: 5%;
+                top: 0px;
+                position: relative;
+                z-index: 3;
+                padding: 2px;
+
+        }
+        }
+
+        #Overflow {
+            overflow-wrap: break-word;
+            hyphens: auto;
+          }
+    }
+    .summaryItem{
+
+        border: 1px solid #9e9e9e;
+        border-radius: 10px;
+        outline: none;
+        height: 4rem;
+        width: 100%;
+        position: relative;
+        margin-top: 5px;
+
+        .pic{
+            
+            height: 40px;
+            width: 40px;
+            top: -5.5rem;
+            margin-left: 1%;
+            border-radius: 40px;
+            position: relative;
+            // display: inline-block;
+        
+    }
+        
+        img {
+            margin-right: 65%;
+            max-height: 7rem;
+            // top: 1rem;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+        .name {
+            font-size: 20px;
+            width: 80%;
+            left: 10%;
+            margin-right: 0%;
+            top: 0rem;
+            position: relative;
+            z-index: 0;
+            padding: 2px;
+        }
+        .text {
+            font-size: 20px;
+            width: 80%;
+            left: 10%;
+            margin-right: 0%;
+            top: 2px;
+            position: relative;
+            z-index: 0;
+            padding: 2px;
+        }
+        .status {
+            font-size: 20px;
+            top: -2rem;
+            position: relative;
+            text-align: center;
+            margin-left: 5%;
+        }
+        .price {
+            color: green;
+            font-size: 30px;
+            top: -3.5rem;
+            position: relative;
+            text-align: right;
+            margin-right: 5%;
+        }
+        .delete {
+            text-align: right;
+            
+            button {
+                margin-right: 5%;
+                top: 0px;
+                position: relative;
+                z-index: 3;
+                padding: 2px;
+
+        }
+        }
+
+        #Overflow {
+            overflow-wrap: break-word;
+            hyphens: auto;
+          }
+    }
+
+    
+
+
+}

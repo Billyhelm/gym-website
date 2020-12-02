@@ -13,22 +13,33 @@ const Header = props => {
                         <img src={Logo} alt="F45 Logo"/>
                     </Link>
                 </div>
+                
             <div className="callToActions">
                 {localStorage.id && (
                     <ul>
                         <li>
-                            <Link to='/profile'>{localStorage.name}</Link>
+                            <Link to='/orders'>Orders</Link>
                         </li>
                         {localStorage.status === 'admin' && (
+                            <>
+                        <li>
+                            <Link to='/admin'>Admin</Link>
+                        </li>
                         <li>
                             <Link to='/newproduct'>New Product</Link>
                         </li>
-
+                            </>
                         )}
                         <li onClick={()=>handleLogout()}>
                            <a>LogOut</a>
                           
                         </li>
+                        
+                           {/* <li> <img src={localStorage.image}/></li>  */}
+                           
+                               
+                     
+                        
                     </ul>
                 )}
 

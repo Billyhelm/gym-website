@@ -1,5 +1,7 @@
 import React, { Component } from 'react' 
 import './styles.scss'
+import Button from '../../components/forms/Button'
+
 
 
 const Cart = props => {
